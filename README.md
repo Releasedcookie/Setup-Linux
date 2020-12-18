@@ -2,7 +2,7 @@
 A program to easily install linux how I like it :)
 
 
-# Setting up ubuntu
+## Setting up ubuntu
 Download the file
 `git clone https://github.com/Releasedcookie/setup-linux.git`
 
@@ -14,3 +14,12 @@ Change the permission of the file so you can execute it
 
 Run the file as sudo
 `sudo ./setup-ubuntu.sh`
+
+### Copy the below into a terminal for full automation :)
+
+'''
+git clone https://github.com/Releasedcookie/setup-linux.git
+cd setup-linux
+chmod +x setup-ubuntu.sh
+sudo ./setup-ubuntu.sh
+```
