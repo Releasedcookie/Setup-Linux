@@ -10,7 +10,7 @@ read -p "--- Is your graphics card amd or nvidia? " GRAPHICS_CARD
 echo "$GRAPHICS_CARD"
 
 GAMES_SETUP="n"
-read -p "--- Set up Ubuntu for games? y/n " GAMES_SETUP
+read -p "--- Do you want to set this machine up for gaming? y/n " GAMES_SETUP
 
 WHERE_I_AM=$(pwd)
 
