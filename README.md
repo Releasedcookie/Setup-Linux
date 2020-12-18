@@ -17,7 +17,7 @@ Run the file as sudo
 
 ### Copy the below into a terminal for full automation :)
 
-'''
+```
 git clone https://github.com/Releasedcookie/setup-linux.git
 cd setup-linux
 chmod +x setup-ubuntu.sh
