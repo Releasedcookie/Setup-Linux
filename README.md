@@ -2,7 +2,8 @@
 A program to easily install linux how I like it :)
 
 
-## Setting up ubuntu
+## Setting up Ubuntu 20.04 LTS
+
 Download the file
 `git clone https://github.com/Releasedcookie/setup-linux.git`
 
