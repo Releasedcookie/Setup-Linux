@@ -1,17 +1,18 @@
 #!/bin/bash
 
 clear
-echo "Hello Lets Set this machine up :)"
+echo "Right, lets get this machine setup for you!"
+echo "Just a few questions before we begin"
 
 
 # Grab Variables / User Input
-read -p "Is your graphics card amd or nvidia? " GRAPHICS_CARD
+read -p "--- Is your graphics card amd or nvidia? " GRAPHICS_CARD
 echo "$GRAPHICS_CARD"
 
 GAMES_SETUP="n"
-read -p "Set up Ubuntu for games? y/n " GAMES_SETUP
+read -p "--- Set up Ubuntu for games? y/n " GAMES_SETUP
 
-
+WHERE_I_AM=$(pwd)
 
 # ===================================== Basic Upgrades =====================================
 # The Basics For Setting Up
@@ -19,32 +20,32 @@ sudo apt-get update -y
 sudo apt-get upgrade -y
 
 # Enable 32-bit libraries
-sudo sudo dpkg --add-architecture i386 -y
+sudo sudo dpkg --add-architecture i386
 
 # Install Chrome
-wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+wget https://dl.google.com/linux/direct/google-chrome-beta_current_amd64.deb
 sudo apt install ./google-chrome-stable_current_amd64.deb
 
 # Install Spotify
 curl -sS https://download.spotify.com/debian/pubkey_0D811D58.gpg | sudo apt-key add -
 echo "deb http://repository.spotify.com stable non-free" | sudo tee /etc/apt/sources.list.d/spotify.list
 sudo apt-get update
-sudo apt-get install spotify-client
+sudo apt-get install spotify-client -y
 
 # Install VLC Media Player
-sudo add-apt-repository ppa:videolan/master-daily
+sudo add-apt-repository ppa:videolan/master-daily -y
 sudo apt update
-sudo apt-get install vlc qtwayland5
+sudo apt-get install vlc qtwayland5 -y
 
 # Install Neofetch
-sudo add-apt-repository ppa:dawidd0811/neofetch
+sudo add-apt-repository ppa:dawidd0811/neofetch -y
 sudo apt-get update
-sudo apt-get update install neofetch
+sudo apt-get update install neofetch -y
 
 # Install Stacer
-sudo add-apt-repository ppa:oguzhaninan/stacer
+sudo add-apt-repository ppa:oguzhaninan/stacer -y
 sudo apt-get update
-sudo apt-get install stacer
+sudo apt-get install stacer -y
 # ===================================== Graphic Cards Drivers =====================================
 #  ================ if GRAPHICS_CARD = amd | install AMD graphics driver set
 if [ "$GRAPHICS_CARD" == "amd" ]
@@ -76,9 +77,9 @@ case "$GAMES_SETUP" in
     # ================ Custom Kernal
       # Official Site: https://xanmod.org
     echo 'deb http://deb.xanmod.org releases main'
-    sudo tee /etc/apt/sources.list.d/xanmod-kernel.list && wget -qO - https://dl.xanmod.org/gpg.key
-    sudo apt-key add -
-    sudo apt update && sudo apt install linux-xanmod -y
+    #sudo tee /etc/apt/sources.list.d/xanmod-kernel.list && wget -qO - https://dl.xanmod.org/gpg.key
+    #sudo apt-key add -
+    #sudo apt update && sudo apt install linux-xanmod -y
     # ================ Wine Dependancies and Lutris
     cd ~
     wget -nc https://dl.winehq.org/wine-builds/winehq.key
@@ -91,9 +92,9 @@ case "$GAMES_SETUP" in
     sudo apt-get install lutris -y
 
     # ================ Install Steam
-    sudo add-apt-repository multiverse
+    sudo add-apt-repository multiverse -y
     sudo apt update
-    sudo apt install steam
+    sudo apt install steam -y
 
     # ================ Install Gamemode (Remove CPU Throttling)
       # GitHub Source Project: https://github.com/FeralInteractive/gamemode
@@ -102,16 +103,16 @@ case "$GAMES_SETUP" in
     git clone https://github.com/FeralInteractive/gamemode.git
     cd gamemode
     git checkout 1.5.1 # omit to build the master branch
-    ./bootstrap.sh
+    ./bootstrap.sh -y
     cd ~
 
     # ================ Install a Custom Proton
       #Source Project: https://github.com/GloriousEggroll/proton-ge-custom#manual
       #Auto-Install Project: https://github.com/Termuellinator/ProtonUpdater
     cd ~
-    wget https://raw.githubusercontent.com/Termuellinator/ProtonUpdater/master/cproton.sh
+    wget https://raw.githubusercontent.com/Termuellinator/ProtonUpdater/master/cproton.sh -y
     sudo chmod +x cproton.sh
-    ./cproton.sh
+    ./cproton.sh -y
     ;;
   # ============================= Bypass Gaming Setup
   [nN] | [nN][oO])
@@ -122,6 +123,12 @@ case "$GAMES_SETUP" in
 esac # End Of Gaming Installation
 
 # ===================================== Clean Up The System =====================================
-sudo apt-get purge firefox*
-sudo apt-get purge thunderbird*
-sudo apt-get autoremove
+sudo apt-get purge firefox* -y
+sudo apt-get purge thunderbird* -y
+
+cd $WHERE_I_AM
+sudo rm google-chrome-beta_current_amd64.deb
+
+sudo apt-get autoremove -y
+
+echo "Finished! You are all set! Now go have some fun!"
