@@ -45,14 +45,14 @@ If the answer to the above is `Yes` then the below will be installed:
 
 
 
-The following files will be removed/added
-##### Added
+During the entire process we also customise Linux for... well... my use (since this is my repository). The following files will be added or removed:
+#### Added
 - Google Chrome Beta
 - Spotify
 - VLC Media Player
 - Neofetch
 - Stacer
 
-#### Remove
+#### Removed
 - Firefox
 - Thunderbird
