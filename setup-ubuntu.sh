@@ -123,7 +123,7 @@ case "$GAMES_SETUP" in
 esac # End Of Gaming Installation
 
 # ===================================== Clean Up The System =====================================
-sudo apt-get purge firefox* -y
+# sudo apt-get purge firefox* -y
 sudo apt-get purge thunderbird* -y
 
 cd $WHERE_I_AM

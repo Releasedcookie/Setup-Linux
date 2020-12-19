@@ -19,6 +19,7 @@ Run the file as sudo
 ### Copy the below into a terminal for full automation :)
 
 ```
+sudo apt-get install git -y
 git clone https://github.com/Releasedcookie/setup-linux.git
 cd setup-linux
 chmod +x setup-ubuntu.sh
@@ -55,5 +56,4 @@ During the entire process we also customise Linux for... well... my use (since t
 - Stacer
 
 #### Removed
-- Firefox
 - Thunderbird
